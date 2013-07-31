@@ -735,6 +735,7 @@ static void import_kernel_nv(char *name, int for_emulator)
         property_set("ro.boot.serialno", value);
 #endif
     }
+#ifdef HAS_DUALSYSTEM
 	else if (!strncmp(name, "syspart", 7) && name_len > 7) {
         char prop[PROP_NAME_MAX];
         int cnt;
@@ -743,6 +744,7 @@ static void import_kernel_nv(char *name, int for_emulator)
         if (cnt < PROP_NAME_MAX)
             property_set(prop, value);
     }
+#endif
 }
 
 static void export_kernel_boot_props(void)
